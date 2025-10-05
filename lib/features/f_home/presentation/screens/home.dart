@@ -5,12 +5,14 @@ class ThemeTestScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-    final textTheme = Theme.of(context).textTheme;
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final textTheme = theme.textTheme;
 
     return Scaffold(
       appBar: AppBar(title: const Text('Theme Test')),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -19,10 +21,28 @@ class ThemeTestScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () {},
               child: const Text('Primary Button'),
+              // Uses default theme style
             ),
             const SizedBox(height: 12),
+            ElevatedButton(
+              onPressed: () {},
+              child: const Text('Secondary Button'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: colorScheme.secondary,
+                foregroundColor: colorScheme.onSecondary,
+              ),
+            ),
+            const SizedBox(height: 24),
             Text('Surface Color', style: textTheme.bodyLarge),
-            Container(width: 100, height: 100, color: colorScheme.surface),
+            Container(
+              width: 100,
+              height: 100,
+              decoration: BoxDecoration(
+                color: colorScheme.surface,
+                border: Border.all(color: colorScheme.outline), // optional
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
           ],
         ),
       ),
