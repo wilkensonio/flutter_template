@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
-import '../../../../core/routing/routes.dart';
-
-class ThemeTestScreen extends StatelessWidget {
-  const ThemeTestScreen({super.key});
+class ThemeAuthTestScreen extends StatelessWidget {
+  const ThemeAuthTestScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,17 +19,13 @@ class ThemeTestScreen extends StatelessWidget {
             Text('Primary Color Example', style: textTheme.titleLarge),
             const SizedBox(height: 12),
             ElevatedButton(
-              onPressed: () {
-                GoRouter.of(context).go(Routes.home);
-              },
+              onPressed: () {},
               child: const Text('Primary Button'),
               // Uses default theme style
             ),
             const SizedBox(height: 12),
             ElevatedButton(
-              onPressed: () {
-                GoRouter.of(context).go(Routes.themeTest);
-              },
+              onPressed: () {},
               child: const Text('Secondary Button'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: colorScheme.secondary,
